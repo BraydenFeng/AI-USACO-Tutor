@@ -319,6 +319,14 @@ header::after {
 	margin-bottom: 1rem;
 }
 
+/* ─── Step screenshot ───────────────────────────────────── */
+.step-img {
+	width: 100%;
+	border-radius: 0.5rem;
+	border: 0.0625rem solid var(--border);
+	display: block;
+}
+
 /* ─── URL bar ───────────────────────────────────────────── */
 .url-bar {
 	display: flex;
@@ -696,13 +704,9 @@ footer {
 				<div class="step-node">02</div>
 				<div class="step-card" data-num="02">
 					<div class="step-eyebrow">Step 2</div>
-					<div class="step-title">Go to the API Keys page</div>
-					<p class="step-desc">Navigate directly to the API keys section. Accept the Terms of Service if prompted — this is a one-time step.</p>
-					<a class="url-bar" href="https://aistudio.google.com/api-keys" target="_blank" rel="noopener">
-						<span class="url-icon">🔒</span>
-						<span class="url-text"><span class="url-host">aistudio.google.com</span>/api-keys</span>
-						<span class="url-arrow">→</span>
-					</a>
+					<div class="step-title">Click "Get API key" in the left sidebar</div>
+					<p class="step-desc">Once you're in AI Studio, find <strong style="color:var(--text);font-weight:600">Get API key</strong> in the left navigation panel and click it.</p>
+					<img class="step-img" src="Where to click.png" alt="Where to click Get API key in AI Studio">
 				</div>
 			</div>
 
@@ -712,20 +716,8 @@ footer {
 				<div class="step-card" data-num="03">
 					<div class="step-eyebrow">Step 3</div>
 					<div class="step-title">Create and copy your key</div>
-					<p class="step-desc">Click <strong style="color:var(--text); font-weight:600">+ Create API key</strong>, give it a name, then copy the key — you won't be able to view it again after closing the dialog.</p>
-					<div class="mock-studio">
-						<div class="mock-studio-bar">
-							<span class="mock-studio-label">API keys &nbsp;·&nbsp; Google AI Studio</span>
-							<div class="mock-create-btn">Create API key</div>
-						</div>
-						<div class="mock-key-list">
-							<div class="mock-key-row">
-								<span class="mock-key-name">My project</span>
-								<span class="mock-key-val">AIzaSy••••••••••••••••••••••••</span>
-								<span class="mock-copy">Copy</span>
-							</div>
-						</div>
-					</div>
+					<p class="step-desc">Click <strong style="color:var(--text);font-weight:600">+ Create API key</strong>, give it a name, then copy the key — you won't be able to view it again after closing the dialog.</p>
+					<img class="step-img" src="Create API key.png" alt="Create API key button in AI Studio">
 				</div>
 			</div>
 
