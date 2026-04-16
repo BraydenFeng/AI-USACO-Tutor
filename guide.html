@@ -797,7 +797,7 @@ footer {
 			setTimeout(() => el.classList.add("visible"), delay);
 			observer.unobserve(el);
 		});
-	}, { threshold: 0.12, rootMargin: "0rem 0rem -2rem 0rem" });
+	}, { threshold: 0.12, rootMargin: "0px 0px -32px 0px" });
 
 	document.querySelectorAll(".step, .feature").forEach((el) => observer.observe(el));
 </script>
