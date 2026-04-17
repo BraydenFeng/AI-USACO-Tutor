@@ -495,6 +495,7 @@
     // ── Toggle ─────────────────────────────────────────────────────────────────
 
     function toggleSidebar() {
+        if (!context) return;
         sidebar.classList.toggle("open");
     }
 
