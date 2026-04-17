@@ -63,344 +63,216 @@
 
     const styleEl = document.createElement("style");
     styleEl.textContent = `
-        /* ── FAB ── */
         #usaco-ext-fab {
             position: fixed;
-            bottom: 28px;
-            left: 28px;
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            background: #0369a1;
+            bottom: 24px;
+            left: 24px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #2563eb;
             color: #fff;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
             z-index: 2147483647;
-            overflow: visible;
-            box-shadow: 0 4px 20px rgba(3, 105, 161, 0.5), 0 0 0 0 rgba(6, 182, 212, 0.4);
+            overflow: hidden;
+            box-shadow: none;
             user-select: none;
             border: none;
             padding: 0;
-            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
         }
-        #usaco-ext-fab::after {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border-radius: 16px;
-            border: 1.5px solid rgba(6, 182, 212, 0.35);
-            animation: usaco-fab-pulse 2.8s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @keyframes usaco-fab-pulse {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50%       { opacity: 0.6; transform: scale(1.07); }
-        }
-        #usaco-ext-fab:hover {
-            transform: translateY(-2px) scale(1.06);
-            box-shadow: 0 8px 28px rgba(3, 105, 161, 0.65), 0 0 0 0 rgba(6, 182, 212, 0.3);
-        }
+        #usaco-ext-fab:hover { background: #1d4ed8; }
 
-        /* ── Sidebar ── */
         #usaco-ext-sidebar {
             position: fixed;
             top: 0;
             right: 0;
-            width: 22vw;
-            min-width: 290px;
-            max-width: 400px;
+            width: 20vw;
             height: 100vh;
-            background: #07111f;
-            border-left: 1px solid #1c2f47;
+            background: #ffffff;
+            border-left: 1px solid #d1d5db;
             z-index: 2147483646;
             display: none;
             flex-direction: column;
-            font-family: 'Segoe UI', -apple-system, system-ui, sans-serif;
-            font-size: 13px;
-            color: #dde5f0;
-            box-shadow: -6px 0 40px rgba(0, 0, 0, 0.55);
+            font-family: system-ui, -apple-system, Arial, sans-serif;
+            font-size: 1vw;
+            color: #111827;
+            box-shadow: -4px 0 24px rgba(0,0,0,0.12);
             overflow: hidden;
         }
-        #usaco-ext-sidebar.open {
-            display: flex;
-            animation: usaco-sidebar-in 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        @keyframes usaco-sidebar-in {
-            from { transform: translateX(100%); opacity: 0; }
-            to   { transform: translateX(0);    opacity: 1; }
-        }
-
-        /* ── Header ── */
+        #usaco-ext-sidebar.open { display: flex; }
         #usaco-ext-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 11px 14px;
-            border-bottom: 1px solid #1c2f47;
-            background: #0a1828;
+            padding: 2% 4%;
+            border-bottom: 1px solid #d1d5db;
             flex-shrink: 0;
-            position: relative;
-        }
-        #usaco-ext-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 55%;
-            height: 1px;
-            background: linear-gradient(90deg, #06b6d4 0%, transparent 100%);
         }
         #usaco-ext-brand {
             font-weight: 600;
-            font-size: 12.5px;
+            font-size: 1.1vw;
             display: flex;
             align-items: center;
-            gap: 7px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            color: #dde5f0;
-            letter-spacing: -0.01em;
-        }
-        #usaco-ext-brand::before {
-            content: '>';
-            color: #06b6d4;
-            font-size: 13px;
+            gap: 0.5vw;
         }
         #usaco-ext-rating {
-            font-size: 11px;
-            font-weight: 700;
+            font-size: 0.8vw;
+            font-weight: 600;
+            background: #dbeafe;
+            color: #1d4ed8;
             border-radius: 999px;
-            padding: 2px 9px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            letter-spacing: 0.02em;
+            padding: 1px 8px;
+        }
+        @media (prefers-color-scheme: dark) {
+            #usaco-ext-rating { background: #1e3a8a; color: #93c5fd; }
         }
         #usaco-ext-settings-btn, #usaco-ext-close-sidebar-btn {
             cursor: pointer;
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1.2vw;
             background: none;
             border: none;
-            color: #4d6a8a;
+            color: #111827;
             padding: 0;
             line-height: 1;
-            font-size: 14px;
-            border-radius: 5px;
-            transition: color 0.15s, background 0.15s;
         }
-        #usaco-ext-settings-btn:hover, #usaco-ext-close-sidebar-btn:hover {
-            color: #dde5f0;
-            background: #132238;
-        }
-
-        /* ── Chat ── */
         #usaco-ext-chat {
             flex: 1;
             overflow-y: auto;
-            padding: 14px 12px;
+            padding: 4%;
             display: flex;
             flex-direction: column;
-            gap: 9px;
-            background: #07111f;
-            scrollbar-width: thin;
-            scrollbar-color: #1c2f47 transparent;
+            gap: 4%;
         }
-        #usaco-ext-chat::-webkit-scrollbar { width: 4px; }
-        #usaco-ext-chat::-webkit-scrollbar-track { background: transparent; }
-        #usaco-ext-chat::-webkit-scrollbar-thumb { background: #1c2f47; border-radius: 2px; }
-
-        /* ── Messages ── */
         .usaco-ext-msg {
-            max-width: 90%;
-            align-self: flex-start;
-            border-radius: 10px 10px 10px 2px;
-            padding: 9px 12px;
-            font-size: 13px;
-            line-height: 1.58;
-            border: 1px solid #1c2f47;
-            background: #0d1a2d;
-            color: #c8d8ec;
-            word-break: break-word;
-            animation: usaco-msg-in 0.17s ease-out both;
-        }
-        @keyframes usaco-msg-in {
-            from { opacity: 0; transform: translateY(5px); }
-            to   { opacity: 1; transform: translateY(0); }
+            border-radius: 0.6vw;
+            padding: 4%;
+            font-size: 0.9vw;
+            line-height: 1.5;
+            border: 1px solid #d1d5db;
+            background: #f3f4f6;
+            color: #111827;
         }
         .usaco-ext-msg.user {
-            align-self: flex-end;
-            background: #0c3058;
-            border-color: #0369a1;
-            color: #e0f0fc;
-            border-radius: 10px 10px 2px 10px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
         }
         .usaco-ext-msg pre {
-            margin: 8px 0;
-            padding: 9px 11px;
-            border-radius: 6px;
-            border: 1px solid #1c2f47;
-            background: #030c18;
-            overflow-x: auto;
-            font-size: 11.5px;
-            scrollbar-width: thin;
-            scrollbar-color: #1c2f47 transparent;
+            margin: 4% 0;
+            padding: 4%;
+            border-radius: 0.5vw;
+            border: 1px solid #d1d5db;
+            background: #fff;
+            overflow: auto;
         }
         .usaco-ext-msg code {
-            font-family: 'Consolas', 'Courier New', ui-monospace, monospace;
-            font-size: 11.5px;
-            color: #7dd3fc;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         }
-        .usaco-ext-msg pre code {
-            color: #a5d8f5;
-        }
-
-        /* ── Input area ── */
         #usaco-ext-input-area {
-            padding: 11px 12px;
-            border-top: 1px solid #1c2f47;
+            padding: 4%;
+            border-top: 1px solid #d1d5db;
             flex-shrink: 0;
-            background: #0a1828;
         }
         #usaco-ext-textarea {
             width: 100%;
-            min-height: 50px;
+            min-height: 5vh;
             resize: none;
-            background: #07111f;
-            border: 1px solid #1c2f47;
-            border-radius: 8px;
-            color: #dde5f0;
-            padding: 8px 11px;
-            font-size: 13px;
-            font-family: 'Segoe UI', -apple-system, system-ui, sans-serif;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 0.6vw;
+            color: #111827;
+            padding: 4%;
+            font-size: 0.9vw;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
             box-sizing: border-box;
-            outline: none;
-            line-height: 1.5;
-            transition: border-color 0.15s, box-shadow 0.15s;
         }
-        #usaco-ext-textarea:focus {
-            border-color: #06b6d4;
-            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.12);
-        }
-        #usaco-ext-textarea::placeholder { color: #243548; }
         #usaco-ext-ask-btn {
-            margin-top: 8px;
+            margin-top: 4%;
             width: 100%;
-            background: #0369a1;
+            background: #2563eb;
             border: none;
-            padding: 8px 12px;
-            border-radius: 7px;
+            padding: 4%;
+            border-radius: 0.5vw;
             color: #fff;
             cursor: pointer;
-            font-size: 11.5px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            transition: background 0.15s, transform 0.1s;
+            font-size: 0.9vw;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
         }
-        #usaco-ext-ask-btn:hover { background: #0284c7; }
-        #usaco-ext-ask-btn:active { transform: scale(0.98); }
-        #usaco-ext-ask-btn:disabled { background: #132238; color: #2a4060; cursor: default; transform: none; }
+        #usaco-ext-ask-btn:hover { background: #1d4ed8; }
+        #usaco-ext-ask-btn:disabled { background: #93c5fd; cursor: default; }
 
-        /* ── Settings panel ── */
         #usaco-ext-settings-panel {
             position: absolute;
             inset: 0;
-            background: #07111f;
+            background: #fff;
             display: none;
             flex-direction: column;
-            padding: 16px;
-            z-index: 10;
+            padding: 6%;
         }
-        #usaco-ext-settings-panel.open {
-            display: flex;
-            animation: usaco-panel-in 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        @keyframes usaco-panel-in {
-            from { opacity: 0; transform: translateX(16px); }
-            to   { opacity: 1; transform: translateX(0); }
-        }
+        #usaco-ext-settings-panel.open { display: flex; }
         #usaco-ext-settings-head {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 18px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #1c2f47;
+            margin-bottom: 6%;
         }
-        #usaco-ext-settings-head h3 {
-            margin: 0;
-            font-size: 12.5px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-weight: 600;
-            color: #dde5f0;
-            letter-spacing: -0.01em;
-        }
-        #usaco-ext-settings-head h3::before {
-            content: '# ';
-            color: #06b6d4;
-        }
+        #usaco-ext-settings-head h3 { margin: 0; font-size: 1.1vw; }
         #usaco-ext-close-settings {
-            background: #132238;
-            border: 1px solid #1c2f47;
-            border-radius: 5px;
-            padding: 5px 12px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 0.4vw;
+            padding: 2% 4%;
             cursor: pointer;
-            font-size: 11px;
-            color: #4d6a8a;
-            font-family: 'Consolas', monospace;
-            letter-spacing: 0.04em;
-            transition: background 0.15s, color 0.15s;
-        }
-        #usaco-ext-close-settings:hover {
-            background: #1c2f47;
-            color: #dde5f0;
+            font-size: 0.9vw;
+            color: #111827;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
         }
         .usaco-ext-label {
-            font-size: 10px;
+            font-size: 0.8vw;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 2%;
             display: block;
-            color: #4d6a8a;
-            font-family: 'Consolas', monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            color: #111827;
         }
         #usaco-ext-key-input {
             width: 100%;
-            padding: 8px 11px;
-            margin-bottom: 14px;
-            background: #0a1828;
-            border: 1px solid #1c2f47;
-            border-radius: 7px;
-            color: #dde5f0;
-            font-size: 12.5px;
+            padding: 4%;
+            margin-bottom: 4%;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5vw;
+            color: #111827;
+            font-size: 0.9vw;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            outline: none;
-            transition: border-color 0.15s, box-shadow 0.15s;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
         }
-        #usaco-ext-key-input:focus {
-            border-color: #06b6d4;
-            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.12);
-        }
-        #usaco-ext-key-input::placeholder { color: #243548; }
         #usaco-ext-save-btn {
-            background: #132238;
-            border: 1px solid #1c2f47;
-            padding: 8px 12px;
-            border-radius: 7px;
-            color: #4d6a8a;
+            background: #4b5563;
+            border: none;
+            padding: 4%;
+            border-radius: 0.5vw;
+            color: #fff;
             cursor: pointer;
-            font-size: 11px;
-            font-family: 'Consolas', monospace;
-            letter-spacing: 0.05em;
-            transition: background 0.15s, color 0.15s;
+            font-size: 0.9vw;
+            font-family: system-ui, -apple-system, Arial, sans-serif;
         }
-        #usaco-ext-save-btn:hover {
-            background: #1c2f47;
-            color: #dde5f0;
+
+        @media (prefers-color-scheme: dark) {
+            #usaco-ext-sidebar { background: #0f0f0f; color: #f9fafb; border-color: #2a2a2a; }
+            .usaco-ext-msg { background: #1b1b1b; border-color: #2a2a2a; color: #f9fafb; }
+            .usaco-ext-msg pre { background: #0f0f0f; border-color: #2a2a2a; }
+            #usaco-ext-header { border-color: #2a2a2a; }
+            #usaco-ext-settings-btn, #usaco-ext-close-sidebar-btn { color: #f9fafb; }
+            #usaco-ext-brand { color: #f9fafb; }
+            #usaco-ext-input-area { border-color: #2a2a2a; }
+            #usaco-ext-textarea { background: #1b1b1b; border-color: #2a2a2a; color: #f9fafb; }
+            #usaco-ext-settings-panel { background: #0f0f0f; border-color: #2a2a2a; }
+            #usaco-ext-settings-head h3 { color: #f9fafb; }
+            #usaco-ext-close-settings { background: #1b1b1b; border-color: #2a2a2a; color: #f9fafb; }
+            .usaco-ext-label { color: #f9fafb; }
+            #usaco-ext-key-input { background: #1b1b1b; border-color: #2a2a2a; color: #f9fafb; }
         }
     `;
     document.head.appendChild(styleEl);
